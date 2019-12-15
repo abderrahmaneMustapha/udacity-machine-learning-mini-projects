@@ -14,12 +14,23 @@ sys.path.append("../tools/")
 from email_preprocess import preprocess
 
 from sklearn import svm
+from sklearn.metrics import accuracy_score
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
-inear_svc = svm.SVC(kernel='linear')
-inear_svc.fit(features_train, labels_train)
+svc = svm.SVC(kernel='linear')
+
+fit_time = time()
+fit = svc.fit(features_train, labels_train)
+print("time to train the classifier : ",round(time() - fit_time,3))
+
+predict_time = time()
+pred = svc.predict(features_test)
+print("time to make prediction : ",round(time() - predict_time,3))
+
+print("accuary : ",accuracy_score(pred, labels_test))
+
 
 
 #########################################################
