@@ -13,13 +13,13 @@ from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
 
-
+from sklearn import svm
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
-
-
+inear_svc = svm.SVC(kernel='linear')
+inear_svc.fit(features_train, labels_train)
 
 
 #########################################################
