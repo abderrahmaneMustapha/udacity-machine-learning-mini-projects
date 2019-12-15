@@ -19,7 +19,12 @@ from sklearn.metrics import accuracy_score
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
-svc = svm.SVC(kernel='linear')
+#features_train = features_train[:int(len(features_train)/100)]
+#labels_train = labels_train[:int(len(labels_train)/100)]
+
+svc = svm.SVC(C=1000, kernel='rbf')
+
+
 
 fit_time = time()
 fit = svc.fit(features_train, labels_train)
@@ -33,9 +38,5 @@ print("accuary : ",accuracy_score(pred, labels_test))
 
 
 
-#########################################################
-### your code goes here ###
-
-#########################################################
 
 
