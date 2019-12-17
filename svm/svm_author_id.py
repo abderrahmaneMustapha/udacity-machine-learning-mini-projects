@@ -22,7 +22,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #features_train = features_train[:int(len(features_train)/100)]
 #labels_train = labels_train[:int(len(labels_train)/100)]
 
-svc = svm.SVC(C=1000, kernel='rbf')
+svc = svm.SVC(C=10000, kernel='rbf')
 
 
 
@@ -32,11 +32,9 @@ print("time to train the classifier : ",round(time() - fit_time,3))
 
 predict_time = time()
 pred = svc.predict(features_test)
+print('for 10 : ',pred[10])
+print('for 26 : ',pred[26])
+print('for 50 : ',pred[50])
 print("time to make prediction : ",round(time() - predict_time,3))
 
 print("accuary : ",accuracy_score(pred, labels_test))
-
-
-
-
-
