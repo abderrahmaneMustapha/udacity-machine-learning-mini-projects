@@ -25,16 +25,21 @@ features_train, features_test, labels_train, labels_test = preprocess()
 svc = svm.SVC(C=10000, kernel='rbf')
 
 
-
 fit_time = time()
 fit = svc.fit(features_train, labels_train)
 print("time to train the classifier : ",round(time() - fit_time,3))
 
 predict_time = time()
 pred = svc.predict(features_test)
-print('for 10 : ',pred[10])
-print('for 26 : ',pred[26])
-print('for 50 : ',pred[50])
+
+
+
+print("tests in chris class ",sum(pred))
+
+#print('for 10 : ',pred[10])
+#print('for 26 : ',pred[26])
+#print('for 50 : ',pred[50])
+
 print("time to make prediction : ",round(time() - predict_time,3))
 
 print("accuary : ",accuracy_score(pred, labels_test))
