@@ -4,8 +4,29 @@ import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
 
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
+#algorithms : 
+#   k nearest neighbors
+#   adaboost
+#   random forest
+
+def k_neighbot(features_train, labels_train,features_test, labels_test,choice=1):
+    if choice ==1:
+
+        clf = KNeighborsClassifier(n_neighbors=1)
+        print("trainig start :")
+        clf.fit(features_train, labels_train)
+        print("predict start :")
+        pred = clf.predict(features_test)
+        print(accuracy_score(pred,labels_test))
+        prettyPicture(clf, features_test, labels_test)
+
+
+k_neighbot(features_train, labels_train,features_test, labels_test)
 
 ### the training data (features_train, labels_train) have both "fast" and "slow"
 ### points mixed together--separate them so we can give them different colors
@@ -14,6 +35,7 @@ grade_fast = [features_train[ii][0] for ii in range(0, len(features_train)) if l
 bumpy_fast = [features_train[ii][1] for ii in range(0, len(features_train)) if labels_train[ii]==0]
 grade_slow = [features_train[ii][0] for ii in range(0, len(features_train)) if labels_train[ii]==1]
 bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if labels_train[ii]==1]
+
 
 
 #### initial visualization
@@ -37,8 +59,3 @@ plt.show()
 
 
 
-
-try:
-    prettyPicture(clf, features_test, labels_test)
-except NameError:
-    pass
