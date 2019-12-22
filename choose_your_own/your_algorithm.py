@@ -14,7 +14,7 @@ features_train, labels_train, features_test, labels_test = makeTerrainData()
 #   adaboost
 #   random forest
 
-def k_neighbot(features_train, labels_train,features_test, labels_test,choice=1):
+def k_neighbor(features_train, labels_train,features_test, labels_test,choice=1):
     if choice ==1:
 
         clf = KNeighborsClassifier(n_neighbors=1)
@@ -26,7 +26,7 @@ def k_neighbot(features_train, labels_train,features_test, labels_test,choice=1)
         prettyPicture(clf, features_test, labels_test)
 
 
-k_neighbot(features_train, labels_train,features_test, labels_test)
+k_neighbor(features_train, labels_train,features_test, labels_test)
 
 ### the training data (features_train, labels_train) have both "fast" and "slow"
 ### points mixed together--separate them so we can give them different colors
