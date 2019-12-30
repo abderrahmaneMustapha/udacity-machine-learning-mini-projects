@@ -31,7 +31,7 @@ print("time to train the classifier : ",round(time() - fit_time,3))
 
 predict_time = time()
 pred = svc.predict(features_test)
-
+print(accuracy_score(pred,labels_test))
 
 
 print("tests in chris class ",sum(pred))
