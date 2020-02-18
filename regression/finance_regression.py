@@ -59,15 +59,20 @@ plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 
 
 
+print("intercept ",reg.intercept_)
+print("score on training data ", reg.score(feature_train, target_train))
+print("score on testing data ", reg.score(feature_test, target_test))
 ### draw the regression line, once it's coded
-try:
-    plt.plot( feature_test, reg.predict(feature_test) )
-except NameError:
-    pass
+
+plt.plot( feature_test, reg.predict(feature_test) )
+
+reg.fit(feature_test, target_test)
+print("slope ",reg.coef_)
+plt.plot(feature_train, reg.predict(feature_train), color="b")
+
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[0])
 plt.legend()
 plt.show()
 
-print("slope ",reg.coef_)
-print("intercept ",reg.intercept_)
+
